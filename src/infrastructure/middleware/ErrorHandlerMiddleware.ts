@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { TopicNotFoundException } from '../../domain/exceptions/TopicNotFound';
+import { ResourceNotFoundException } from '../../domain/exceptions/ResourceNotFound';
 
 export const errorHandler = (
 	err: Error,
@@ -7,7 +8,10 @@ export const errorHandler = (
 	res: Response,
 	next: NextFunction,
 ) => {
-	if (err instanceof TopicNotFoundException) {
+	if (
+		err instanceof TopicNotFoundException ||
+		err instanceof ResourceNotFoundException
+	) {
 		res.status(404).json({ message: err.message });
 		return;
 	}

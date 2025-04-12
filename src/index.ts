@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import config from './infrastructure/config/config';
 import topicRoutes from './interfaces/http/routes/topicRoutes';
 import resourceRoutes from './interfaces/http/routes/resourceRoutes';
@@ -12,6 +12,12 @@ app.use(AuthenticationMiddleware);
 
 app.use('/topic', topicRoutes);
 app.use('/resource', resourceRoutes);
+
+app.use((req: Request, res: Response) => {
+	res.status(404).json({
+		message: `Route not found`,
+	});
+});
 
 app.use(errorHandler);
 
