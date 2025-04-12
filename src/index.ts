@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import config from './infrastructure/config/config';
 import topicRoutes from './interfaces/http/routes/topicRoutes';
 import resourceRoutes from './interfaces/http/routes/resourceRoutes';

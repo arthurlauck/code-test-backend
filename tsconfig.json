@@ -11,6 +11,8 @@
 		"skipLibCheck": true,
 		"outDir": "dist",
 		"sourceMap": true,
-		"rootDir": "./src"
-	}
+		"rootDir": "./src",
+		"isolatedModules": true
+	},
+	"include": ["src/**/*"]
 }
