@@ -1,4 +1,4 @@
-import Resource from '../models/Resource';
+import { Resource } from '../models/Resource';
 import Topic from '../models/Topic';
 
 export class TopicTree extends Topic {

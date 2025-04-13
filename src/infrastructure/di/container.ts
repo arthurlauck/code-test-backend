@@ -1,6 +1,6 @@
 import SqliteTopicRepository from '../persistence/SqliteTopicRepository';
-import TopicService from '../../domain/services/TopicService';
-import TopicController from '../../interfaces/http/controllers/TopicController';
+import { TopicService } from '../../domain/services/TopicService';
+import { TopicController } from '../../interfaces/http/controllers/TopicController';
 import SqliteResourceRepository from '../persistence/SqliteResourceRepository';
 import ResourceController from '../../interfaces/http/controllers/ResourceController';
 import { TopicTreeService } from '../../domain/services/TopicTreeService';

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { CreateTopicDTO } from '../../../domain/dto/createTopicDTO';
 import { UpdateTopicDTO } from '../../../domain/dto/updateTopicDTO';
-import ITopicService from '../../../domain/services/TopicService';
+import { ITopicService } from '../../../domain/services/TopicService';
 import { ITopicTreeService } from '../../../domain/services/TopicTreeService';
 import { ITopicPathService } from '../../../domain/services/TopicPathService';
 import {
@@ -9,7 +9,7 @@ import {
 	updateTopicSchema,
 } from '../validators/topicSchema';
 
-export default class TopicController {
+export class TopicController {
 	constructor(
 		private topicService: ITopicService,
 		private topicTreeService: ITopicTreeService,
@@ -17,8 +17,8 @@ export default class TopicController {
 	) {}
 
 	public getTopic = (req: Request, res: Response) => {
-		const id: string | undefined = req.params.id;
-		const topic = this.topicService.getTopicWithResourcesById(id!);
+		const id = req.params.id as string;
+		const topic = this.topicService.getTopicWithResourcesById(id);
 		res.status(200).json(topic);
 	};
 

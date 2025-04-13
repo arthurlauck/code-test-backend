@@ -1,6 +1,6 @@
 import { TopicTree } from '../dto/topicTree';
 import Topic from '../models/Topic';
-import ITopicService from './TopicService';
+import { ITopicService } from './TopicService';
 import { ITopicTreeService } from './TopicTreeService';
 
 export interface ITopicPathService {
@@ -15,7 +15,7 @@ export class TopicPathService {
 
 	public getTopicPath(fromId: string, toId: string): string[] {
 		const fromTopic = this.topicService.getTopicById(fromId);
-		const toTopic = this.topicService.getTopicById(toId);
+		this.topicService.getTopicById(toId); // Just to check if exists
 
 		// Get root node, to have complete tree
 		const rootNode = this.getRootParentTopic(fromTopic);

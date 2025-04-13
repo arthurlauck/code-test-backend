@@ -1,13 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { TopicNotFoundException } from '../../domain/exceptions/TopicNotFound';
 import { ResourceNotFoundException } from '../../domain/exceptions/ResourceNotFound';
 
-export const errorHandler = (
-	err: Error,
-	req: Request,
-	res: Response,
-	next: NextFunction,
-) => {
+export const errorHandler = (err: Error, req: Request, res: Response) => {
 	if (
 		err instanceof TopicNotFoundException ||
 		err instanceof ResourceNotFoundException

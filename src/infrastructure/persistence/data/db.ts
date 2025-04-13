@@ -1,8 +1,6 @@
 import { DatabaseSync } from 'node:sqlite';
 
-const database = new DatabaseSync(
-	`./src/infrastructure/persistence/data/db.sqlite`,
-);
+const database = new DatabaseSync(':memory:');
 
 const initDatabase = `
 CREATE TABLE IF NOT EXISTS topic (

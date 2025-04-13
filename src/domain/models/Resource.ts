@@ -1,6 +1,10 @@
-export type ResourceType = 'video' | 'article' | 'pdf';
+export enum ResourceType {
+	VIDEO = 'video',
+	ARTICLE = 'article',
+	PDF = 'pdf',
+}
 
-export default class Resource {
+export class Resource {
 	constructor(
 		public readonly id: string,
 		public readonly topicId: string,

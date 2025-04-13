@@ -1,4 +1,4 @@
-import Resource from '../models/Resource';
+import { Resource } from '../models/Resource';
 
 export default interface IResourceRepository {
 	getResourceById(id: string): Resource | null;

@@ -1,6 +1,6 @@
 import { CreateResourceDTO } from '../dto/createResourceDTO';
 import { ResourceNotFoundException } from '../exceptions/ResourceNotFound';
-import Resource from '../models/Resource';
+import { Resource } from '../models/Resource';
 import IResourceRepository from '../repositories/IResourceRepository';
 import { ITopicResourceMediator } from './TopicResourceMediator';
 

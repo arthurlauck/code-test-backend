@@ -1,6 +1,6 @@
 import Topic from '../models/Topic';
-import Resource from '../models/Resource';
-import ITopicService from './TopicService';
+import { Resource } from '../models/Resource';
+import { ITopicService } from './TopicService';
 import { IResourceService } from './ResourceService';
 
 export interface ITopicResourceMediator {

@@ -1,4 +1,4 @@
-import Resource from '../../domain/models/Resource';
+import { Resource } from '../../domain/models/Resource';
 import IResourceRepository from '../../domain/repositories/IResourceRepository';
 import database from './data/db';
 

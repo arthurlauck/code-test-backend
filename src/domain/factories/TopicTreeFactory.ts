@@ -1,5 +1,5 @@
 import { TopicTree } from '../dto/topicTree';
-import Resource from '../models/Resource';
+import { Resource } from '../models/Resource';
 import Topic from '../models/Topic';
 
 export interface ITopicTreeFactory {
@@ -7,7 +7,7 @@ export interface ITopicTreeFactory {
 }
 
 export class TopicTreeFactory implements ITopicTreeFactory {
-	public buildTopicTree(topic: Topic, resources: Resource[]) {
+	public buildTopicTree(topic: Topic, resources: Resource[] = []) {
 		return new TopicTree(
 			topic.id,
 			topic.name,

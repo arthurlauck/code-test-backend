@@ -7,18 +7,17 @@ import { ITopicRepository } from '../repositories/ITopicRepository';
 import { ITopicResourceMediator } from './TopicResourceMediator';
 import { TopicNotFoundException } from '../exceptions/TopicNotFound';
 
-export default interface ITopicService {
-	getTopicById(id: string): Topic | null;
-	getTopicWithResourcesById(id: string): TopicWithResource | null;
-	getTopicByVersion(id: string, version: number): Topic | null;
-	getTopicPath(fromId: string, toId: string): string[];
+export interface ITopicService {
+	getTopicById(id: string): Topic;
+	getTopicWithResourcesById(id: string): TopicWithResource;
+	getTopicByVersion(id: string, version: number): Topic;
 	getTopicChildren(id: string): Topic[];
 	createTopic(createTopicDTO: CreateTopicDTO): Topic;
-	updateTopic(id: string, updateTopicDTO: UpdateTopicDTO): Topic | null;
+	updateTopic(id: string, updateTopicDTO: UpdateTopicDTO): Topic;
 	deleteTopic(id: string): void;
 }
 
-export default class TopicService implements ITopicService {
+export class TopicService implements ITopicService {
 	constructor(
 		private topicRepo: ITopicRepository,
 		private topicResourceMediator: ITopicResourceMediator,
@@ -33,7 +32,7 @@ export default class TopicService implements ITopicService {
 		return topic;
 	}
 
-	public getTopicWithResourcesById(id: string): TopicWithResource | null {
+	public getTopicWithResourcesById(id: string): TopicWithResource {
 		const topic = this.getTopicById(id);
 
 		const resources = this.topicResourceMediator.getResourcesByTopicId(id);
@@ -43,10 +42,10 @@ export default class TopicService implements ITopicService {
 		};
 	}
 
-	public getTopicByVersion = (id: string, version: number): Topic | null => {
+	public getTopicByVersion = (id: string, version: number): Topic => {
 		const topic = this.topicRepo.getTopicByVersion(id, version);
 		if (!topic) {
-			return null;
+			throw new TopicNotFoundException(id);
 		}
 		return topic;
 	};
@@ -79,11 +78,8 @@ export default class TopicService implements ITopicService {
 	public updateTopic = (
 		id: string,
 		updateTopicDTO: UpdateTopicDTO,
-	): Topic | null => {
-		const topic = this.topicRepo.getTopicById(id);
-		if (!topic) {
-			return null;
-		}
+	): Topic => {
+		const topic = this.getTopicById(id);
 
 		if (updateTopicDTO.parentTopicId) {
 			const parentTopic = this.getTopicById(updateTopicDTO.parentTopicId);
@@ -143,14 +139,5 @@ export default class TopicService implements ITopicService {
 
 		const parentTopic = this.getTopicById(topic.parentTopicId);
 		return this.checkCircularDependency(parentTopic, compareId);
-	};
-
-	private getRootParentTopic = (topic: Topic): Topic => {
-		if (!topic.parentTopicId) {
-			return topic;
-		}
-
-		const parent = this.getTopicById(topic.parentTopicId);
-		return this.getRootParentTopic(parent);
 	};
 }
