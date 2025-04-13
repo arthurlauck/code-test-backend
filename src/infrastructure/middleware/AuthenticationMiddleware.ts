@@ -14,6 +14,7 @@ export const AuthenticationMiddleware = (
 	res: Response,
 	next: NextFunction,
 ) => {
+	// This is a mock authentication middleware
 	const auth = req.headers['fake_auth'] as UserRole | undefined;
 	const authFactory = new AuthorizationFactory();
 

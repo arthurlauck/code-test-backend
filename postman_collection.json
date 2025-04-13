@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "2bfe0ae7-9344-4eea-aeca-262602a5e81a",
+		"name": "backendtest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4801695"
+	},
+	"item": [
+		{
+			"name": "Topics",
+			"item": [
+				{
+					"name": "Get topic by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8282/topic/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5c41aed8-6591-46c3-a8df-ffa5b921d322sadas"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get topic by id and version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8282/topic/:id/version/:version",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic",
+								":id",
+								"version",
+								":version"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "57faf1ac-d49e-44b5-837f-9974f9d5ea7b"
+								},
+								{
+									"key": "version",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get topic tree",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8282/topic/:id/tree",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic",
+								":id",
+								"tree"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "35be37ee-442d-4fb0-a2f9-ab15d331d3ad"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get topics path",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8282/topic/path/:from/:to",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic",
+								"path",
+								":from",
+								":to"
+							],
+							"variable": [
+								{
+									"key": "from",
+									"value": "3a6546d2-17e7-4a15-bfe4-bc2c8d639719"
+								},
+								{
+									"key": "to",
+									"value": "4f55c91d-85cd-4c07-a48c-8311910eeccf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create topic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"topic name\",\n    \"content\": \"topic content\",\n    \"#parentTopicId\": \"1296a9d6-89e4-4522-adc1-d979b622b488\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8282/topic",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update topic",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name update\",\n    \"content\": \"content update\",\n    \"parentTopicId\": \"7d0ea63e-3d83-440b-92d0-a3f98c7f4788\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8282/topic/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2bc682c3-030d-420b-b537-5a5ce7c57fa9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete topic",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8282/topic/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"topic",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5c41aed8-6591-46c3-a8df-ffa5b921d322"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Resources",
+			"item": [
+				{
+					"name": "Get resource by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8282/resource/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"resource",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "686f5b72-f1c8-45b3-b356-b04c280e5141sad"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create resource",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topicId\": \"2e98b8c0-5f0b-4121-9344-c092e203558f\",\n    \"url\": \"http://example.com\",\n    \"description\": \"description of the resource\",\n    \"type\": \"pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8282/resource",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"resource"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update resource",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topicId\": \"topic-id\",\n    \"url\": \"http://example.com\",\n    \"description\": \"description updated\",\n    \"type\": \"pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8282/resource/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"resource",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "95ebf3b6-2577-4765-987e-8e94d1c4b1a5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete resource",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "fake_auth",
+								"value": "admin",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8282/resource/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"resource",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "83547af9-4567-491e-8d83-2eb038fe88abasdas"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
